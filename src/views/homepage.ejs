@@ -1,0 +1,77 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>HomePage</title>
+    <link rel="stylesheet" href="/css/style.css">
+</head>
+<body>
+
+
+
+    <div class="topnav">
+        <a class="active" href="/">Home</a>
+        <a href="/create">Create new user </a>
+    </div>
+
+    <div class="table-container">
+        
+        <div class="Title">List User</div>
+    </div>
+
+        <table>
+            <tr>
+                <th>ID</th>
+                <th>Email</th>
+                <th>Name</th>
+                <th>City</th>
+                <th>Actions</th>
+            </tr>
+            
+            <ul class="timeline">
+                <!-- <% for (let i=0; i < listusers.length; i++) { %>
+                    <tr>
+                        <td><%= listusers[i].id %></td>
+                        <td><%= listusers[i].email %></td>
+                        <td><%= listusers[i].name %></td>
+                        <td><%= listusers[i].city%></td>
+                        <td>
+                            <button>Edit</button>
+                            <button>Delete</button>
+                        </td>
+                    </tr>
+                    <% } %> -->
+
+                    <!-- dùng hàm foreach để load dữ liệu cho tường minh và gọn code -->
+
+                    <% listusers.forEach(function(user) { %>
+                        <tr>
+                            <td>
+                                <%= user.id %>
+                            </td>
+                            <td>
+                                <%= user.email %>
+                            </td>
+                            <td>
+                                <%= user.name %>
+                            </td>
+                            <td>
+                                <%= user.city%>
+                            </td>
+                            <td>
+                                <a href="/update/<%= user.id %>">Edit</a>
+                                
+                                <form action="/delete-user/<%= user.id %>" method="post">
+                                    <button>Delete</button>
+                                </form>
+                                
+                            </td>
+                        </tr>
+                        <% }); %>
+            </ul>
+        </table>
+    
+
+</body>
+</html>
