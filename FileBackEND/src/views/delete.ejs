@@ -1,0 +1,51 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Delete user </title>
+    <link rel="stylesheet" href="/css/style.css">
+</head>
+
+<body>
+
+
+    <%= JSON.stringify(userEdit) %>
+        <div class="topnav">
+            <a href="/">Home</a>
+            <a href="/create">Create new user </a>
+        </div>
+
+        <div class="form">
+
+            <form action="/delete-user" method="post">
+
+                <fieldset>
+                    <legend><b> Update a new user </b></legend>
+
+                    <div class="input-group-d-none">
+                        <label>ID:</label>
+                        <input type="text" name="userid" value="<%= userEdit.id %>">
+                        <!-- fill code vào ô  -->
+
+                    </div>
+
+                    <div class="input-group">
+                        <label>Ban co chac muon xoa nguoi dung voi email nay: </label>
+                        <input type="text" name="email" value="<%= userEdit.email %>">
+                        <!-- fill code vào ô  -->
+
+                    </div>
+
+
+                    <div class="button-add">
+                        <button>Confirm</button>
+
+                    </div>
+                </fieldset>
+            </form>
+        </div>
+</body>
+
+</html>
