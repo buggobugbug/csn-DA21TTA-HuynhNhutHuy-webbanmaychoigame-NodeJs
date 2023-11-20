@@ -22,11 +22,12 @@
 
         <table>
             <tr>
-                <th>ID</th>
-                <th>Email</th>
-                <th>Name</th>
-                <th>City</th>
-                <th>Actions</th>
+                <th>Mã sản phẩm</th>
+                <th>Tên sản phẩm</th>
+                <th>Mô tả</th>
+                <th>Giá</th>
+                <th>Số Lượng</th>
+                <th>Hành động</th>
             </tr>
             
             <ul class="timeline">
@@ -48,19 +49,22 @@
                     <% listusers.forEach(function(user) { %>
                         <tr>
                             <td>
-                                <%= user.id %>
+                                <%= user.Masanpham %>
                             </td>
                             <td>
-                                <%= user.email %>
+                                <%= user.Tensanpham %>
                             </td>
                             <td>
-                                <%= user.name %>
+                                <%= user.Mota %>
                             </td>
                             <td>
-                                <%= user.city%>
+                                <%= user.Gia%>
                             </td>
                             <td>
-                                <a href="/update/<%= user.id %>">Edit</a>
+                                <%= user.Soluong%>
+                            </td>
+                            <td>
+                                <a href="/update-user/<%= user.id %>">Edit</a>
                                 
                                 <form action="/delete-user/<%= user.id %>" method="post">
                                     <button>Delete</button>
@@ -71,7 +75,49 @@
                         <% }); %>
             </ul>
         </table>
-    
+
+
+        <!-- Chức năng tạo mới user -->
+        <div class="form">
+
+        <form action="/create-user" method="post">
+
+            <fieldset>
+                <legend><b> Tạo mới sản phẩm : </b></legend>
+                <div class="input-group">
+                    <label> Mã sản phẩm : </label>
+                    <input type="text" name="Masanpham">
+                
+                </div>
+                <div class="input-group">
+                    <label>Tên sản phẩm</label>
+                    <input type="text" name="Tensanpham">
+
+                </div>
+                <div class="input-group">
+                    <label>Mô tả : </label>
+                    <input type="text" name="Mota">
+
+                </div>
+
+                <div class="input-group">
+                    <label>Giá</label>
+                    <input type="text" name="Gia">
+
+                </div>
+                <div class="input-group">
+                    <label>Soluong</label>
+                    <input type="text" name="Soluong">
+                
+                </div>
+
+
+                <div class="button-add">
+                    <button>Save</button>
+
+                </div>
+            </fieldset>
+        </form>
 
 </body>
 </html>

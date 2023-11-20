@@ -17,7 +17,7 @@ router.post('/update-user', postUpdateuser)
 router.post('/delete-user/:id', postDeleteUser);
 router.post('/delete-user', postHandleRemoveuser);
 
-//check duonbg link vidu nhu la http/8080/abc
+//check đường link vidu nhu la http/8080/abc
 
 // router.get('/abc', (req, res) => {
 //     //res.send('Check abc')

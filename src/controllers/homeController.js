@@ -16,7 +16,7 @@ const gethoidanit = (req, res) => {
 }
 
 const getCreatePage = (req, res) => {
-    res.render('create.ejs')
+    res.render('homapage.ejs')
 }
 
 const getUpdateUser = async(req, res) => {
@@ -30,13 +30,15 @@ const getUpdateUser = async(req, res) => {
 
 const postCreatuser = async(req, res) => {
     
-    let email = req.body.email;
-    let name = req.body.name;
-    let city = req.body.city;
+    let Masanpham = req.body.Masanpham;
+    let Tensanpham = req.body.Tensanpham;
+    let Mota = req.body.Mota;
+    let Gia = req.body.Gia;
+    let Soluong = req.body.Soluong;
 
     // lấy data từ trên ứng dụng xuống
 
-    console.log('>>>>email= ', email, 'Name = ', name, 'city =', city )
+    console.log('>>>>Masp= ', Masanpham, 'Tensanpham = ', Tensanpham, 'Mota =', Mota, '>>>Gia= ', Gia, '>>>Soluong= ', Soluong )
     // res.send('creat a new user')
 
     // connection.query(
@@ -50,7 +52,7 @@ const postCreatuser = async(req, res) => {
 
 
     let [results, fields] = await connection.query(
-        'INSERT INTO Users (email, name, city) VALUES (?, ?, ?)',[email, name, city]);
+        'INSERT INTO sanpham (Masanpham, Tensanpham, Mota, Gia, Soluong) VALUES (?, ?, ?, ? , ?)',[Masanpham, Tensanpham, Mota, Gia, Soluong]);
 
     console.log(">>>>>>check result", results)
     res.send('Create user succeed, OK')
@@ -74,13 +76,14 @@ const postCreatuser = async(req, res) => {
 
 const postUpdateuser = async (req, res) => {
 
-    let email = req.body.email;
-    let name = req.body.name;
-    let city = req.body.city;
-    let userid = req.body.userid;
+    let Masanpham = req.body.Masanpham;
+    let Tensanpham = req.body.Tensanpham;
+    let Mota = req.body.Mota;
+    let Gia = req.body.Gia;
+    let Soluong = req.body.Soluong;
 
    
-    await updateuserbyID(email, city, name, userid)
+    await updateuserbyID(Masanpham, Tensanpham, Mota, Gia, Soluong)
     // res.send('update, OK')
     res.redirect('/');
 
@@ -95,8 +98,8 @@ const postDeleteUser = async (req, res) => {
 }
 
 const postHandleRemoveuser = async(req, res ) => {
-    const id =req.body.userid;
-    await deleteuserbyID(id)
+    const Masanpham =req.body.userid;
+    await deleteuserbyID(Masanpham)
 
     res.redirect('/');
 }

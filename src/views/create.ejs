@@ -4,7 +4,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Create new user </title>
+    <title>HomePage</title>
     <link rel="stylesheet" href="/css/style.css">
 </head>
 
@@ -13,30 +13,103 @@
 
 
     <div class="topnav">
-        <a href="/">Home</a>
-        <a class="active" href="/create">Create new user </a>
+        <a class="active" href="/">Home</a>
+        <a href="/create">Create new user </a>
     </div>
 
+    <div class="table-container">
+
+        <div class="Title">List User</div>
+    </div>
+
+    <table>
+        <tr>
+            <th>Mã sản phẩm</th>
+            <th>Tên sản phẩm</th>
+            <th>Mô tả</th>
+            <th>Giá</th>
+            <th>Số Lượng</th>
+            <th>Hành động</th>
+        </tr>
+
+        <ul class="timeline">
+            <!-- <% for (let i=0; i < listusers.length; i++) { %>
+                    <tr>
+                        <td><%= listusers[i].id %></td>
+                        <td><%= listusers[i].email %></td>
+                        <td><%= listusers[i].name %></td>
+                        <td><%= listusers[i].city%></td>
+                        <td>
+                            <button>Edit</button>
+                            <button>Delete</button>
+                        </td>
+                    </tr>
+                    <% } %> -->
+
+            <!-- dùng hàm foreach để load dữ liệu cho tường minh và gọn code -->
+
+            <% listusers.forEach(function(user) { %>
+                <tr>
+                    <td>
+                        <%= user.Masanpham %>
+                    </td>
+                    <td>
+                        <%= user.Tensanpham %>
+                    </td>
+                    <td>
+                        <%= user.Mota %>
+                    </td>
+                    <td>
+                        <%= user.Gia%>
+                    </td>
+                    <td>
+                        <%= user.Soluong%>
+                    </td>
+                    <td>
+                        <a href="/update/<%= user.id %>">Edit</a>
+
+                        <form action="/delete-user/<%= user.id %>" method="post">
+                            <button>Delete</button>
+                        </form>
+
+                    </td>
+                </tr>
+                <% }); %>
+        </ul>
+    </table>
+
+
+    <!-- Chức năng tạo mới user -->
     <div class="form">
 
         <form action="/create-user" method="post">
 
             <fieldset>
-                <legend><b> ADD NEW </b></legend>
+                <legend><b> Tạo mới sản phẩm : </b></legend>
                 <div class="input-group">
-                    <label>Email:</label>
-                    <input type="text" name="email">
+                    <label> Mã sản phẩm : </label>
+                    <input type="text" name="Masanpham">
 
                 </div>
                 <div class="input-group">
-                    <label>Name:</label>
-                    <input type="text" name="name">
+                    <label>Tên sản phẩm</label>
+                    <input type="text" name="Tensanpham">
+
+                </div>
+                <div class="input-group">
+                    <label>Mô tả : </label>
+                    <input type="text" name="Mota">
 
                 </div>
 
                 <div class="input-group">
-                    <label>City:</label>
-                    <input type="text" name="city">
+                    <label>Giá</label>
+                    <input type="text" name="Gia">
+
+                </div>
+                <div class="input-group">
+                    <label>Soluong</label>
+                    <input type="text" name="Soluong">
 
                 </div>
 
@@ -47,7 +120,7 @@
                 </div>
             </fieldset>
         </form>
-    </div>
+
 </body>
 
 </html>
