@@ -12,7 +12,7 @@
 
     <div class="topnav">
         <a class="active" href="/">Home</a>
-        <a href="/create">Create new user </a>
+        <a href="">Create new user </a>
     </div>
 
     <div class="table-container">
@@ -22,7 +22,7 @@
 
         <table>
             <tr>
-                <th>Mã sản phẩm</th>
+                <th>ID</th>
                 <th>Tên sản phẩm</th>
                 <th>Mô tả</th>
                 <th>Giá</th>
@@ -31,25 +31,13 @@
             </tr>
             
             <ul class="timeline">
-                <!-- <% for (let i=0; i < listusers.length; i++) { %>
-                    <tr>
-                        <td><%= listusers[i].id %></td>
-                        <td><%= listusers[i].email %></td>
-                        <td><%= listusers[i].name %></td>
-                        <td><%= listusers[i].city%></td>
-                        <td>
-                            <button>Edit</button>
-                            <button>Delete</button>
-                        </td>
-                    </tr>
-                    <% } %> -->
 
                     <!-- dùng hàm foreach để load dữ liệu cho tường minh và gọn code -->
 
                     <% listusers.forEach(function(user) { %>
                         <tr>
                             <td>
-                                <%= user.Masanpham %>
+                                <%= user.id %>
                             </td>
                             <td>
                                 <%= user.Tensanpham %>
@@ -64,7 +52,7 @@
                                 <%= user.Soluong%>
                             </td>
                             <td>
-                                <a href="/update-user/<%= user.id %>">Edit</a>
+                                <a href="/update/<%= user.id %>">Edit</a>
                                 
                                 <form action="/delete-user/<%= user.id %>" method="post">
                                     <button>Delete</button>
@@ -84,11 +72,6 @@
 
             <fieldset>
                 <legend><b> Tạo mới sản phẩm : </b></legend>
-                <div class="input-group">
-                    <label> Mã sản phẩm : </label>
-                    <input type="text" name="Masanpham">
-                
-                </div>
                 <div class="input-group">
                     <label>Tên sản phẩm</label>
                     <input type="text" name="Tensanpham">

@@ -6,22 +6,22 @@ const getALLusers  = async() =>{
 }
 
 const getUserById = async(userid) => {
-    let [result, fields] = await connection.query('select * from sanpham where Masanpham = ?', [userid])
+    let [result, fields] = await connection.query('select * from sanpham where id = ?', [userid])
 
     let user = result && result.length > 0 ? result[0] : {};
 
     return user;
 }
 
-
-const updateuserbyID = async (Masanpham, Tensanpham, Mota, Gia, Soluong) => {
+const updateuserbyID = async(Tensanpham, Mota, Gia, Soluong, userId) => {
     let [results, fields] = await connection.query(
-        'UPDATE sanpham SET Masanpham = ?, Tensanpham = ?, Mota = ?, Gia = ?, Soluong=?  WHERE Masanpham = ?', [Masanpham, Tensanpham, Mota, Gia, Soluong]);
+        'UPDATE sanpham SET Tensanpham = ?, Mota = ? , Gia = ?, Soluong = ? WHERE id = ?', [Tensanpham, Mota, Gia, Soluong, userId]);
 }
 
-const deleteuserbyID = async (Masanpham) => {
+
+const deleteuserbyID = async (id) => {
     let [results, fields] = await connection.query(
-        'DELETE FROM sanpham WHERE Masanpham =?', [Masanpham]);
+        'DELETE FROM sanpham WHERE id =?', [id]);
 }
 
 module.exports = {
