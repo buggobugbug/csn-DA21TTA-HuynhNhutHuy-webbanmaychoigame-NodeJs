@@ -12,7 +12,7 @@ router.get('/hoidanithuychuabietcode', gethoidanit)
 
 router.post('/create-user', postCreatuser)
 router.get('/create', getCreatePage)
-router.get('/update/:id', getUpdateUser) // nói cho server biết rằng đang muốn truyền động id vào
+router.get('/update/:id', getUpdateUser)
 router.post('/update-user', postUpdateuser)
 router.post('/delete-user/:id', postDeleteUser);
 router.post('/delete-user', postHandleRemoveuser);

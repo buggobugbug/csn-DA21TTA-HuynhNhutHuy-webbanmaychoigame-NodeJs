@@ -80,3 +80,8 @@ padding: 15px 20px;
 .input-group-d-none{
     display: none;
 }
+
+
+.d-none{
+    display: none;
+}

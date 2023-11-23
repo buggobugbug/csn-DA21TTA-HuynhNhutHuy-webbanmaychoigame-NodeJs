@@ -20,17 +20,18 @@ const getCreatePage = (req, res) => {
 }
 
 const getUpdateUser = async(req, res) => {
+    let result = await getALLusers();
     const userid = req.params.id;
-    
-    let user = await getUserById(userid);
-
-    res.render('edit.ejs', { userEdit : user })  ; // x <- y 
+    [result, fields] = await connection.query('select * from sanpham where id = ?', [userid])
+    console.log(">>> Check resutl", result)
+    let user = result && result.length > 0 ? result[0] : {};
+    res.render('edit.ejs', { userEdit: user ,listusers : result})
 
 }
 
 const postCreatuser = async(req, res) => {
     
-    let Masanpham = req.body.Masanpham;
+    let id = req.body.id;
     let Tensanpham = req.body.Tensanpham;
     let Mota = req.body.Mota;
     let Gia = req.body.Gia;
@@ -38,7 +39,7 @@ const postCreatuser = async(req, res) => {
 
     // lấy data từ trên ứng dụng xuống
 
-    console.log('>>>>Masp= ', Masanpham, 'Tensanpham = ', Tensanpham, 'Mota =', Mota, '>>>Gia= ', Gia, '>>>Soluong= ', Soluong )
+    console.log('>>>>Masp= ', id, 'Tensanpham = ', Tensanpham, 'Mota =', Mota, '>>>Gia= ', Gia, '>>>Soluong= ', Soluong )
     // res.send('creat a new user')
 
     // connection.query(
@@ -52,10 +53,10 @@ const postCreatuser = async(req, res) => {
 
 
     let [results, fields] = await connection.query(
-        'INSERT INTO sanpham (Masanpham, Tensanpham, Mota, Gia, Soluong) VALUES (?, ?, ?, ? , ?)',[Masanpham, Tensanpham, Mota, Gia, Soluong]);
+        'INSERT INTO sanpham (id, Tensanpham, Mota, Gia, Soluong) VALUES (?, ?, ?, ? , ?)', [id, Tensanpham, Mota, Gia, Soluong]);
 
     console.log(">>>>>>check result", results)
-    res.send('Create user succeed, OK')
+    res.redirect('/');
 
     // simple query
     // connection.query(
@@ -76,17 +77,18 @@ const postCreatuser = async(req, res) => {
 
 const postUpdateuser = async (req, res) => {
 
-    let Masanpham = req.body.Masanpham;
+    let id = req.body.id;
     let Tensanpham = req.body.Tensanpham;
     let Mota = req.body.Mota;
     let Gia = req.body.Gia;
     let Soluong = req.body.Soluong;
-
+    let userId= req.body.userId;
    
-    await updateuserbyID(Masanpham, Tensanpham, Mota, Gia, Soluong)
-    // res.send('update, OK')
-    res.redirect('/');
+    // console.log('>>>>> Tensanpham : ', Tensanpham, 'Mota : ', Mota, 'Gia : ', Gia, 'Soluong : ', Soluong, 'userId', userId );
+    await updateuserbyID(Tensanpham, Mota, Gia, Soluong, userId)
 
+    
+    res.redirect('/')
 
 }
 
@@ -98,8 +100,8 @@ const postDeleteUser = async (req, res) => {
 }
 
 const postHandleRemoveuser = async(req, res ) => {
-    const Masanpham =req.body.userid;
-    await deleteuserbyID(Masanpham)
+    const id =req.body.userid;
+    await deleteuserbyID(id)
 
     res.redirect('/');
 }
