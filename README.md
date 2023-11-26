@@ -15,3 +15,7 @@ bắt đầu sửa code để tối ưu hơn
 
 đang chỉnh sửa trang backend bằng cơ sở dữ liệu tạo bởi phpMyAdmin do Xampp cung cấp , chỉnh sửa,  làm các chức năng tạo, update, xóa, sửa sản phầm trên trang backend, lỗi phần update, delete sẽ cập nhật vào các ngày tiếp theo.
 
+## UPDATE ngày 26/11/2023
+đã học cơ bản reactjs, bắt đầu tạo và làm giao diện với reactjs, ngày 22/11/2023 update code báo cáo tiến độ thực hiện đề án, làm thêm cơ sở dữ liệu đáp ứng chức năng thêm sửa xóa sản phẩm.
+
+
