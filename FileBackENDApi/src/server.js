@@ -4,6 +4,7 @@ require('dotenv').config();
 console.log(">>>>check env", process.env);
 const configViewEngine = require('./config/newengine');
 const webRouter = require('./routes/web');
+const initAPIRoute = require('./routes/api');
 // const mysql = require('mysql2');
 //import express
 const connection = require('./config/database')
@@ -23,6 +24,9 @@ configViewEngine(app);
 // Khai báo routes
 
 app.use('', webRouter);
+
+//init api route
+initAPIRoute(app);
 
 
 // //test connection

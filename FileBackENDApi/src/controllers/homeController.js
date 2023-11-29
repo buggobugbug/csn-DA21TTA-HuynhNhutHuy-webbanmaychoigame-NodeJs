@@ -118,8 +118,15 @@ const getDetailPage= async(req, res) => {
 }
 
 
-const postUpdateUser  = (req, res) => {
-    res.send('Update user')
+const postUpdateUser  = async(req, res) => {
+
+    let {id, email, name, city}= req.body;
+
+    await connection.query(
+            'update Users set id=?, email=?, name =?, city=?', [id, email, name, city]
+    );
+    console.log('Check request', req.body);
+    res.redirect('/')
 }
 
 

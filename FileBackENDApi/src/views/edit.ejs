@@ -146,19 +146,22 @@
         <form action="/update-user" method="post">
             <div class="tieude">UPDATE A NEW USER</div>
             <div>
-            
+
                 <label>Email : </label>
                 <input name="email" value="<%= userEdit.email%>">
             </div>
             <div>
                 <label>Name : </label>
                 <input name="name" value="<%= userEdit.name%>">
+            </div>
             <div>
                 <label>City </label>
                 <input name="city" value="<%= userEdit.city%>">
-                <div>
-                    <button type="submit" class="btn-save">Save</button>
-                </div>
+            </div>
+            <input type="text" value="<%= userEdit.id%>" hidden name="id">
+            <div>
+                <button type="submit" class="btn-save">Save</button>
+            </div>
         </form>
     </div>
 
