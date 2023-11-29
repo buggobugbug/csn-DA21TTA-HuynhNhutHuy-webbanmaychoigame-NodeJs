@@ -1,14 +1,25 @@
 {
-  "name": "filebackendapi",
+  "name": "fullstackzero",
   "version": "1.0.0",
-  "description": "",
-  "main": "index.js",
+  "description": "Hoi Huy biet fullstack la cai quan que gi khong",
+  "main": "server.js",
+  "type": "commonjs",
   "scripts": {
-    "test": "echo \"Error: no test specified\" && exit 1"
+    "test": "echo \"Error: no test specified\" && exit 1",
+    "start": "nodemon ./src/server.js"
   },
-  "author": "",
+  "keywords": [
+    "nodejsreact"
+  ],
+  "author": "Huy",
   "license": "ISC",
   "dependencies": {
-    "express": "4.17.1"
+    "dotenv": "16.0.3",
+    "ejs": "3.1.8",
+    "express": "^4.18.2",
+    "mysql2": "2.3.3"
+  },
+  "devDependencies": {
+    "nodemon": "^2.0.20"
   }
 }

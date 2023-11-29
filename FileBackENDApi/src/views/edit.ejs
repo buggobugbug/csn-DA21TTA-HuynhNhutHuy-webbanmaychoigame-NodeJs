@@ -1,0 +1,168 @@
+<!-- <!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Update new user </title>
+    <link rel="stylesheet" href="/css/style.css">
+</head>
+
+<body>
+
+
+    <%= JSON.stringify(userEdit) %>
+    <div class="topnav">
+        <a href="/">Home</a>
+        <a href="/create">Create new user </a>
+    </div>
+
+    <div class="form">
+
+        <form action="/update-user" method="post">
+
+            <fieldset>
+                <legend><b> Update a new user </b></legend>
+                
+                <div class="input-group-d-none">
+                <label>ID:</label>
+                <input type="text" name="userid" value="<%= userEdit.id %>">
+               
+                
+                </div>
+
+                <div class="input-group">
+                    <label>Email:</label>
+                    <input type="text" name="email" value="<%= userEdit.email %>">  
+          
+
+                </div>
+                <div class="input-group">
+                    <label>Name:</label>
+                    <input type="text" name="name" value="<%= userEdit.name %>">   
+
+                </div>
+
+                <div class="input-group">
+                    <label>City:</label>
+                    <input type="text" name="city" value="<%= userEdit.city %>">
+
+                </div>
+
+
+                <div class="button-add">
+                    <button>Save</button>
+
+                </div>
+            </fieldset>
+        </form>
+    </div>
+</body>
+
+</html> -->
+
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>HomePage</title>
+    <link rel="stylesheet" href="/css/style.css">
+</head>
+
+<body>
+
+
+
+    <div class="topnav">
+        <a class="active" href="/">Home</a>
+        <a href="/create">Create new user </a>
+    </div>
+
+    <div class="table-container">
+
+        <div class="Title">List User</div>
+    </div>
+
+    <table>
+        <tr>
+            <th>ID</th>
+            <th>Email</th>
+            <th>Name</th>
+            <th>City</th>
+            <th>Actions</th>
+        </tr>
+
+        <ul class="timeline">
+            <!-- <% for (let i=0; i < listusers.length; i++) { %>
+                    <tr>
+                        <td><%= listusers[i].id %></td>
+                        <td><%= listusers[i].email %></td>
+                        <td><%= listusers[i].name %></td>
+                        <td><%= listusers[i].city%></td>
+                        <td>
+                            <button>Edit</button>
+                            <button>Delete</button>
+                        </td>
+                    </tr>
+                    <% } %> -->
+
+            <!-- dùng hàm foreach để load dữ liệu cho tường minh và gọn code -->
+
+            <% listusers.forEach(function(user) { %>
+                <tr>
+                    <td>
+                        <%= user.id %>
+                    </td>
+                    <td>
+                        <%= user.email %>
+                    </td>
+                    <td>
+                        <%= user.name %>
+                    </td>
+                    <td>
+                        <%= user.city%>
+                    </td>
+                    <td>
+                        <a href="/detail/user/<%= user.id%>" target="_blank">Detail</a><br>
+                        <form action="/update-user/<%= user.id%>" method="get">
+                            <button type="submit">Edit</button>
+                        </form>
+
+                        <form action="/delete-user" method="post">
+                            <input type="text" hidden value="<%= user.id%>" name="userid">
+                            <button type="submit">Delete</button>
+                        </form>
+
+                    </td>
+                </tr>
+                <% }); %>
+        </ul>
+    </table>
+
+
+    <div class="update-user-container">
+        <form action="/update-user" method="post">
+            <div class="tieude">UPDATE A NEW USER</div>
+            <div>
+            
+                <label>Email : </label>
+                <input name="email" value="<%= userEdit.email%>">
+            </div>
+            <div>
+                <label>Name : </label>
+                <input name="name" value="<%= userEdit.name%>">
+            <div>
+                <label>City </label>
+                <input name="city" value="<%= userEdit.city%>">
+                <div>
+                    <button type="submit" class="btn-save">Save</button>
+                </div>
+        </form>
+    </div>
+
+
+</body>
+
+</html>
