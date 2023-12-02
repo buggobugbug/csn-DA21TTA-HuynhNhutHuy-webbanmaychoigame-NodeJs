@@ -7,8 +7,11 @@ const apiController = require('../controllers/apiController');
 
 const initAPIRoute = (app) => {
     router.get('/users', apiController.getAllUserss); // method GET -> READ data
-
+    router.post('/create-user', apiController.creatNewUSER);
+    router.put('/update-user', apiController.putUpdateuser)
+    router.delete('/delete-user/:id', apiController.deleteUser)
     return app.use('/api/v1/', router);
+    
 };
 
 module.exports = initAPIRoute;
