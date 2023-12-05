@@ -1,12 +1,12 @@
 const connection = require('../config/database');
 const getALLusers  = async() =>{
 
-    let [result, fields] = await connection.query('select * from Users')
+    let [result, fields] = await connection.query('select * from sanpham')
     return result;
 }
 
 const getUserById = async(userid) => {
-    let [result, fields] = await connection.query('select * from Users where id = ?', [userid])
+    let [result, fields] = await connection.query('select * from sanpham where MaSanPham = ?', [userid])
 
     let user = result && result.length > 0 ? result[0] : {};
 
@@ -14,14 +14,14 @@ const getUserById = async(userid) => {
 }
 
 
-const updateuserbyID = async (email, city, name, userid) => {
+const updateuserbyID = async (TenSanPham, Mota, Gia, SoLuong, TenNXS, Theloai, userid) => {
     let [results, fields] = await connection.query(
-        'UPDATE Users SET email = ?, City= ?, Name= ? WHERE id = ?', [email, city, name, userid]);
+        'UPDATE sanpham SET TenSanPham = ? , Mota = ?, Gia = ?, Soluong= ?, TenNXS = ?, Theloai =? WHERE MaSanPham = ?', [TenSanPham, Mota, Gia, SoLuong, TenNXS, Theloai, userid]);
 }
 
-const deleteuserbyID = async (id) => {
+const deleteuserbyID = async (MaSanPham) => {
     let [results, fields] = await connection.query(
-        'DELETE FROM Users WHERE id =?', [id]);
+        'DELETE FROM sanpham WHERE MaSanPham =?', [MaSanPham]);
 }
 
 module.exports = {

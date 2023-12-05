@@ -7,8 +7,7 @@ const router = express.Router();
 const { postUpdateUser,postHandleRemoveuser,postDeleteUser, getHomepage, getABC, gethoidanit, postCreatuser, getCreatePage, getUpdateUser, postUpdateuser, getDetailPage  } = require('../controllers/homeController')
 
 router.get('/', getHomepage)
-router.get('/abc', getABC)
-router.get('/hoidanithuychuabietcode', gethoidanit)
+
 
 // router.post('/create-user', postCreatuser)
 // router.get('/create', getCreatePage)
@@ -19,10 +18,10 @@ router.get('/hoidanithuychuabietcode', gethoidanit)
 
 
 //Phan lam them neu can cmt lai de chay.
-router.get('/detail/user/:id', getDetailPage)
+router.get('/detail/user/:MaSanPham', getDetailPage)
 router.post('/create-new-user', postCreatuser)
 router.post('/delete-user', postDeleteUser)
-router.get('/update-user/:id', getUpdateUser)
+router.get('/update-user/:MaSanPham', getUpdateUser)
 router.post('/update-user', postUpdateUser)
 
 

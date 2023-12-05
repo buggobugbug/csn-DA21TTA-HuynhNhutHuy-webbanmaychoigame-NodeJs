@@ -4,7 +4,7 @@ const connection = require("../config/database");
 let getAllUserss = async (req, res) => {
     let id = req.params.id;
     let [user] = await connection.query(
-        'Select * from Users where id = ?', [id]
+        'Select * from csdlbanmaychoigame where id = ?', [id]
     );
     res.status(200).json({
         message: 'eric',
