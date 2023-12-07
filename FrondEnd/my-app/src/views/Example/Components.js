@@ -16,26 +16,44 @@ class Components extends React.Component {
         
 
         console.log('check job', job)
+        // let currentJobs = this.state.arrayJobs
+        // currentJobs.push(job)
         this.setState({
             arrayJobs: [...this.state.arrayJobs, job]
+            // arrayJobs: currentJobs
         })
     }
 
-
-    
-
-  
+    deleteJob = (job) => {
+        let currentJobs = this.state.arrayJobs;
+        currentJobs = currentJobs.filter(item => item.id !== job.id)
+        this.setState({
+            arrayJobs: currentJobs
+        })
+    }
+   
+    componentDidMount() {
+        console.log('>>>>> run copmponent did mount')
+    }
+    componentDidUpdate(prevProps, prevState) {
+        console.log('>> run diddupcate: , prev state', prevState, 'current', this.state)
+    }
 
     render() {
         console.log('>>> call render', this.state)
 
         return (
             <>
-                <Addcomponents addnewJob={this.addnewJob} /> 
+                <Addcomponents 
+                addnewJob={this.addnewJob} 
+                /> 
 
     
                   
-                <Components1 abc={this.state.arrayJobs} />
+                <Components1 
+                abc={this.state.arrayJobs} 
+                deleteJob={this.deleteJob}
+                />
                 
             </>
         )

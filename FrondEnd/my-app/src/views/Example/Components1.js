@@ -1,4 +1,5 @@
 import React from 'react';
+import './Style.scss'
 class Components1 extends React.Component {
 
     state = {
@@ -12,6 +13,14 @@ class Components1 extends React.Component {
         })
     }
 
+    handleOnClick = (job) => {
+        console.log('>>>>>>>> :', job)
+        this.props.deleteJob(job)
+    }
+
+
+   
+
 
     render() {
         let { abc } = this.props;
@@ -22,7 +31,7 @@ class Components1 extends React.Component {
             <>
                 {showjobs == false ? <div>
 
-                    <button onClick={() => this.handleshowhide()}>show</button>
+                    <button className='button-show' onClick={() => this.handleshowhide()}>show</button>
 
                 </div>
                 :
@@ -32,7 +41,7 @@ class Components1 extends React.Component {
                                 abc.map((item, index) => {
                                     return (
                                         <div key={item.id}>
-                                            ({item.title} - {item.salary})
+                                            ({item.title} - {item.salary}) <></> <span onClick={() => this.handleOnClick(item)}>X</span>
                                         </div>
                                     )
                                 })

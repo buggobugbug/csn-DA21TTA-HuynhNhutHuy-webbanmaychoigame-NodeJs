@@ -28,7 +28,7 @@ class Addcomponents extends React.Component {
         event.preventDefault()
         if(!this.state.title || !this.state.salary)
         {
-            alert('Missing require params')
+            alert('Không có data')
             return;
         }
         console.log('>>> check data input: ', this.state)
