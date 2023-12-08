@@ -1,23 +1,33 @@
-const  {Console}  = require('console');
-const express = require('express');
+import express from "express"
+import configViewEngine from "./configs/viewEngine.js"
+import initWebRoute from "./route/web.js"
+import initAPIRoute from './route/api.js'
+import path from 'path';
+
+
 require('dotenv').config();
-console.log(">>>>check env", process.env);
-const configViewEngine = require('./config/newengine');
-const webRouter = require('./routes/web');
-const initAPIRoute = require('./routes/api');
-const connection = require('./config/database');
-const path = require('path');
-const app = express();
-const port = process.env.PORT || 8888;// hardcode
-const hostname = 'localhost';
-app.use(express.json())
-app.use(express.urlencoded({ extended: true })) 
+
+const app = express()
+const port = process.env.PORT || 8081;
+
+const cors = require("cors");
+app.use("/public", express.static(path.join(__dirname, "public")));
+
+// const cors = require('cors');
+app.use(cors());
+
+app.use(express.urlencoded({ extended: true }));
+app.use(express.json());
+
+//setup view engine
 configViewEngine(app);
-app.use('', webRouter);
+
+//initWebRouter
+initWebRoute(app);
+
+//init api router
 initAPIRoute(app);
-app.listen(port, hostname, () => {
+
+app.listen(port, () => {
     console.log(`Example app listening on port ${port}`)
 })
-
-
-

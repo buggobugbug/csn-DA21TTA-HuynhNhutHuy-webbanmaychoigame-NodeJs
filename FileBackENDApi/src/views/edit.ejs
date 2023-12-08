@@ -1,119 +1,50 @@
-
-<!DOCTYPE html>
 <html lang="en">
 
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>HomePage</title>
+    <link rel="stylesheet" href="https://www.w3schools.com/w3css/4/w3.css">
     <link rel="stylesheet" href="/css/style.css">
+    <title>Node.js Basic</title>
 </head>
 
 <body>
-
-
-
     <div class="topnav">
-        <a class="active" href="/">Home</a>
-        <a href="/create">Create new user </a>
+        <a href="/">Sản phẩm</a>
+        <a class="active" href="">Mới</a>
     </div>
-
-    <div class="table-container">
-
-        <div class="Title">List User</div>
-    </div>
-
-    <table>
-        <tr>
-            <th>Mã sản phẩm</th>
-            <th>Tên sản phẩm</th>
-            <th>Mô tả</th>
-            <th>Giá</th>
-            <th>Số lượng</th>
-            <th>Tên nhà sản xuất</th>
-            <th>Thể loại</th>
-            <th>Actions</th>
-        </tr>
-
-        <ul class="timeline">
-
-            <% listusers.forEach(function(user) { %>
-                <tr>
-                    <td>
-                        <%= user.MaSanPham%>
-                    </td>
-                    <td>
-                        <%= user.TenSanPham%>
-                    </td>
-                    <td>
-                        <%= user.Mota%>
-                    </td>
-                    <td>
-                        <%= user.Gia%>
-                    </td>
-                    <td>
-                        <%= user.SoLuong%>
-                    </td>
-                    <td>
-                        <%= user.TenNXS%>
-                    </td>
-                    <td>
-                        <%= user.Theloai%>
-                    </td>
-                    <td>
-                        <a href="/detail/user/<%= user.MaSanPham%>" target="_blank">Detail</a><br>
-                        <form action="/update-user/<%= user.MaSanPham%>" method="get">
-                            <button type="submit">Edit</button>
-                        </form>
-
-                        <form action="/delete-user" method="post">
-                            <input type="text" hidden value="<%= user.MaSanPham%>" name="userid">
-                            <button type="submit">Delete</button>
-                        </form>
-
-                    </td>
-                </tr>
-                <% }); %>
-        </ul>
-    </table>
-
-
-    <div class="update-user-container">
-        <form action="/update-user" method="post">
-            <div class="tieude">UPDATE A NEW USER</div>
+    <div class="create-user-container">
+        <form action="/Them-san-pham" enctype="multipart/form-data" method="POST">
+            <div><b>Tạo sản phẩm mới:</b></div>
             <div>
-
-                <label>Ten san pham : </label>
-                <input name="TenSanPham" value="<%= userEdit.TenSanPham%>">
+                <label for="">Tên sản phẩm:</label>
+                <input type="text" name="TenSanPham" />
             </div>
             <div>
-                <label>Mô tả :  </label>
-                <input name="Mota" value="<%= userEdit.Mota%>">
+                <label for="">Giá</label>
+                <input type="text" name="Gia" />
             </div>
             <div>
-                <label>Gia : </label>
-                <input name="Gia" value="<%= userEdit.Gia%>">
+                <label for="">Số Lượng: </label>
+                <input type="text" name="SoLuong" />
             </div>
             <div>
-                <label>Số lượng : </label>
-                <input name="SoLuong" value="<%= userEdit.SoLuong%>">
+                <label for="">Tên Nhà Sản Xuất : </label>
+                <input type="text" name="TenNXS" />
             </div>
             <div>
-                <label>Tên nhà sản xuất : </label>
-                <input name="TenNXS" value="<%= userEdit.TenNXS%>">
+                <label for="">Thể loại :</label>
+                <input type="text" name="Theloai" />
             </div>
             <div>
-                <label>Thể loại :  </label>
-                <input name="Theloai" value="<%= userEdit.Theloai%>">
+                <label for="">Ảnh:</label>
+                <input type="file" name="profile_pic" />
             </div>
-            <input type="text" value="<%= userEdit.MaSanPham%>" hidden name="MaSanPham">
             <div>
-                <button type="submit" class="btn-save">Save</button>
+                <button type="submit" class="btnSubmit">Submit</button>
             </div>
         </form>
     </div>
-
-
 </body>
 
 </html>
