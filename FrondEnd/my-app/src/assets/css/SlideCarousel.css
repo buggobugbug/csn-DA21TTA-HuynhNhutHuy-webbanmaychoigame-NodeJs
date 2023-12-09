@@ -1,7 +1,0 @@
-.carousel-item img {
-    /* Ảnh sẽ được co giãn hoặc co dãn để nằm vừa trong khung hình mà không làm thay đổi tỷ lệ khung hình */
-    width: 100%;
-    /* Đảm bảo rằng ảnh chiếm toàn bộ chiều rộng của phần tử cha */
-    height: 100%;
-    /* Đảm bảo rằng ảnh chiếm toàn bộ chiều cao của phần tử cha */
-}

@@ -1,33 +1,22 @@
-import Components from './Example/Components';
-import ListoDo from './Todos/ListoDo';
 import NavBar from '../components/NavBar';
-import CarouselSlide from '../components/CarouselSlide';
 import ListProduct from '../components/ListProduct';
+import Button from 'react-bootstrap/Button';
+import 'bootstrap/dist/css/bootstrap.min.css';
+import CarouselHomPage from '../components/CarouselHomepage';
+
+
+import axios from 'axios';
+
 function App() {
+
+
   return (
     
-      
-      <div>
-      {/* <Components/> */}
-      {/* <ListoDo/>
+      <div className='body'>
 
-      <ToastContainer
-        position="top-center"
-        autoClose={5000}
-        hideProgressBar={false}
-        newestOnTop={false}
-        closeOnClick
-        rtl={false}
-        pauseOnFocusLoss
-        draggable
-        pauseOnHover
-        theme="light"
-      /> */}
-
-      <NavBar />
-      <CarouselSlide/>
+      <NavBar/>
+      <CarouselHomPage/>
       <ListProduct/>
-      {/* Các thành phần khác của ứng dụng */}
       </div>
 
 

@@ -7,7 +7,7 @@ let getAllSanPham = async (req, res) => {
     const productsWithImageUrls = rows.map((SanPham) => {
         return {
             ...SanPham,
-            imageUrl: `http://localhost:8080/public/images/${SanPham.AnhSP}`,
+            imageUrl: `http://localhost:8080/public/images/${SanPham.Mota}`,
         };
     });
 
@@ -38,7 +38,7 @@ let getSanPhamById = async (req, res) => {
 
     const productWithImageUrl = {
         ...rows[0],
-        imageUrl: `http://localhost:8080/public/images/${rows[0].AnhSP}`,
+        imageUrl: `http://localhost:8080/public/images/${rows[0].Mota}`,
     };
 
     return res.status(200).json({
@@ -59,7 +59,7 @@ let getSanPhamSlider = async (req, res) => {
 
         const productsWithImageUrl = rows.map(row => ({
             ...row,
-            imageUrl: `http://localhost:8080/public/images/${row.AnhSP}`,
+            imageUrl: `http://localhost:8080/public/images/${row.Mota}`,
         }));
 
         return res.status(200).json({
