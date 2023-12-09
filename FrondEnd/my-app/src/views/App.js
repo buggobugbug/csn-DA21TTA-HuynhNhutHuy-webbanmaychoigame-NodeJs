@@ -2,6 +2,7 @@ import Components from './Example/Components';
 import ListoDo from './Todos/ListoDo';
 import NavBar from '../components/NavBar';
 import CarouselSlide from '../components/CarouselSlide';
+import ListProduct from '../components/ListProduct';
 function App() {
   return (
     
@@ -25,7 +26,7 @@ function App() {
 
       <NavBar />
       <CarouselSlide/>
-
+      <ListProduct/>
       {/* Các thành phần khác của ứng dụng */}
       </div>
 
