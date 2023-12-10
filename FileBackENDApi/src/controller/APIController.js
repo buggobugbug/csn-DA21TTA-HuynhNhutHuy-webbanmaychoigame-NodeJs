@@ -28,7 +28,7 @@ let getSanPhamById = async (req, res) => {
         });
     }
 
-    const [rows, fields] = await pool.execute('SELECT * FROM SanPham WHERE MaSP = ?', [id]);
+    const [rows, fields] = await pool.execute('SELECT * FROM SanPham WHERE MaSanPham = ?', [id]);
 
     if (rows.length === 0) {
         return res.status(404).json({
@@ -77,9 +77,9 @@ let getSanPhamSlider = async (req, res) => {
 
 
 let createNewUser = async (req, res) => {
-    let { MaSP, TenSP, MaTL, DonGiaSP, TonKhoSP, Chip, Main, VGA, NhanSanXuat, RAM, AnhSP } = req.body;
+    let { MaSanPham, TenSP, MaTL, DonGiaSP, TonKhoSP, Chip, Main, VGA, NhanSanXuat, RAM, AnhSP } = req.body;
 
-    if (!MaSP || !TenSP || !MaTL || !DonGiaSP || !TonKhoSP || !Chip || !Main || !VGA || !NhanSanXuat || !RAM || !AnhSP) {
+    if (!MaSanPham || !TenSP || !MaTL || !DonGiaSP || !TonKhoSP || !Chip || !Main || !VGA || !NhanSanXuat || !RAM || !AnhSP) {
         return res.status(200).json({
             message: "missing create",
         })
@@ -96,9 +96,9 @@ let createNewUser = async (req, res) => {
 }
 
 let updateSanPham = async (req, res) => {
-    let { MaSP, TenSP, MaTL, DonGiaSP, TonKhoSP, Chip, Main, VGA, NhanSanXuat, RAM, AnhSP } = req.body;
+    let { MaSanPham, TenSP, MaTL, DonGiaSP, TonKhoSP, Chip, Main, VGA, NhanSanXuat, RAM, AnhSP } = req.body;
 
-    if (!MaSP || !TenSP || !MaTL || !DonGiaSP || !TonKhoSP || !Chip || !Main || !VGA || !NhanSanXuat || !RAM || !AnhSP) {
+    if (!MaSanPham || !TenSP || !MaTL || !DonGiaSP || !TonKhoSP || !Chip || !Main || !VGA || !NhanSanXuat || !RAM || !AnhSP) {
         return res.status(200).json({
             message: "missing update",
         })
@@ -106,17 +106,17 @@ let updateSanPham = async (req, res) => {
 
     await pool.execute(`
     UPDATE SanPham SET TenSP = ?, MaTL = ?, DonGiaSP=?, TonKhoSP = ?, Chip = ?, Main = ?, VGA = ?, NhanSanXuat = ?, RAM = ?, AnhSP = ? 
-    WHERE MaSP = ?`,
-        [TenSP, MaTL, DonGiaSP, TonKhoSP, Chip, Main, VGA, NhanSanXuat, RAM, AnhSP, MaSP]);
+    WHERE MaSanPham = ?`,
+        [TenSP, MaTL, DonGiaSP, TonKhoSP, Chip, Main, VGA, NhanSanXuat, RAM, AnhSP, MaSanPham]);
     return res.status(200).json({
         message: "ok",
     })
 }
 
 let deleteUser = async (req, res) => {
-    let { MaSP } = req.body;
+    let { MaSanPham } = req.body;
 
-    if (!MaSP) {
+    if (!MaSanPham) {
         return res.status(200).json({
             message: "missing delete",
         })
@@ -124,8 +124,8 @@ let deleteUser = async (req, res) => {
 
     await pool.execute(`
     DELETE FROM SanPham
-    WHERE MaSP = ?`,
-        [MaSP]);
+    WHERE MaSanPham = ?`,
+        [MaSanPham]);
     return res.status(200).json({
         message: "ok",
     })

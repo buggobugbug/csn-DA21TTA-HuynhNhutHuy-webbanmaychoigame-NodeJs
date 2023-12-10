@@ -1,23 +1,25 @@
 import NavBar from '../components/NavBar';
 import ListProduct from '../components/ListProduct';
-import Button from 'react-bootstrap/Button';
 import 'bootstrap/dist/css/bootstrap.min.css';
 import CarouselHomPage from '../components/CarouselHomepage';
+import {Routes, Route  } from 'react-router-dom';
 
-
-import axios from 'axios';
 
 function App() {
 
 
   return (
-    
-      <div className='body'>
 
-      <NavBar/>
-      <CarouselHomPage/>
-      <ListProduct/>
-      </div>
+  <div>
+    <NavBar/>
+    <Routes>
+        <Route exact path='/' element={<><CarouselHomPage/><ListProduct/></>}/>
+    </Routes>
+      <Routes>
+        <Route path='/sanpham' element={<><ListProduct /></>} />
+      </Routes>
+    
+  </div>
 
 
 

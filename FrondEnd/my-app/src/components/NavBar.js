@@ -1,21 +1,16 @@
 import React from 'react';
 import '../assets/css/NavBar.scss'
-import imglogo from '../assets/images/logo.jpg'
-
+import {Link} from 'react-router-dom';
 class NavBar extends React.Component {
     render() {
         return (
-            <nav className="navbar">
-                <ul>
-                    <li><a href="/" className="navLink">Home</a></li>
-                    <li><a href="/sanpham" className="navLink"> Sản Phẩm </a></li>
-                    <li><a href="/about" className="navLink">About</a></li>
-                    <li><a href="/contact" className="navLink">Contact</a></li>
-                    <div className="logo">
-                        <img src={imglogo} alt="" />
-                    </div>
-                </ul>
-            </nav>
+            <div className="topnav">
+                <Link to="/">Home</Link>
+                <Link to="/sanpham">Sản Phẩm</Link>
+                <Link to="/about">About</Link>
+            
+            </div>
+        
         );
     }
 }
