@@ -17,3 +17,4 @@ Cập nhật:
 23/11/2023 chỉnh sửa, upcode lên github báo cáo quá trình làm, làm được các chức năng thêm sửa xóa sản phẩm ở  ôi trường back end bằng nodejs, thiết kế cơ sở dữ liệu để làm file front end
 Cập nhật ngày 5/12/2023 do cập nhật File ReadMe.md lỗi nên bị mất dữ liệu cập nhật, không tiến hành ghi lại, set up môi trường code front end cho trang web.
 
+Cập nhật ngày 10/12/2023 code front end, lấy dữ liệu từ back end lên front end sử dụng thư viện của reactjs, tiến hành code các chức năng của website.
