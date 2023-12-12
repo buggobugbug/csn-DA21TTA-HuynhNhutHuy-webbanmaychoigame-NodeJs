@@ -1,13 +1,13 @@
 import pool from "../configs/connectDB"
 
 let getAllSanPham = async (req, res) => {
-    const [rows, fields] = await pool.execute('SELECT * FROM SanPham');
+    const [rows, fields] = await pool.execute('SELECT * FROM sanpham');
 
     // Thêm đường dẫn đầy đủ cho mỗi sản phẩm
     const productsWithImageUrls = rows.map((SanPham) => {
         return {
             ...SanPham,
-            imageUrl: `http://localhost:8080/public/images/${SanPham.Mota}`,
+            imageUrl: `http://localhost:8081/public/images/${SanPham.Mota}`,
         };
     });
 
@@ -28,7 +28,7 @@ let getSanPhamById = async (req, res) => {
         });
     }
 
-    const [rows, fields] = await pool.execute('SELECT * FROM SanPham WHERE MaSanPham = ?', [id]);
+    const [rows, fields] = await pool.execute('SELECT * FROM sanpham WHERE MaSanPham = ?', [id]);
 
     if (rows.length === 0) {
         return res.status(404).json({
@@ -38,7 +38,7 @@ let getSanPhamById = async (req, res) => {
 
     const productWithImageUrl = {
         ...rows[0],
-        imageUrl: `http://localhost:8080/public/images/${rows[0].Mota}`,
+        imageUrl: `http://localhost:8081/public/images/${rows[0].Mota}`,
     };
 
     return res.status(200).json({
@@ -49,7 +49,7 @@ let getSanPhamById = async (req, res) => {
 
 let getSanPhamSlider = async (req, res) => {
     try {
-        const [rows, fields] = await pool.execute('SELECT * FROM SanPham LIMIT 7');
+        const [rows, fields] = await pool.execute('SELECT * FROM sanpham LIMIT 7');
 
         if (rows.length === 0) {
             return res.status(404).json({
@@ -59,7 +59,7 @@ let getSanPhamSlider = async (req, res) => {
 
         const productsWithImageUrl = rows.map(row => ({
             ...row,
-            imageUrl: `http://localhost:8080/public/images/${row.Mota}`,
+            imageUrl: `http://localhost:8081/public/images/${row.Mota}`,
         }));
 
         return res.status(200).json({
@@ -77,37 +77,37 @@ let getSanPhamSlider = async (req, res) => {
 
 
 let createNewUser = async (req, res) => {
-    let { MaSanPham, TenSP, MaTL, DonGiaSP, TonKhoSP, Chip, Main, VGA, NhanSanXuat, RAM, AnhSP } = req.body;
+    let { MaSanPham, TenSanPham, Theloai, Gia, TenNXS, SoLuong, Mota } = req.body;
 
-    if (!MaSanPham || !TenSP || !MaTL || !DonGiaSP || !TonKhoSP || !Chip || !Main || !VGA || !NhanSanXuat || !RAM || !AnhSP) {
+    if (!MaSanPham || !TenSanPham || !Theloai || !Gia || !TenNXS || !SoLuong || !Mota) {
         return res.status(200).json({
             message: "missing create",
         })
     }
 
     await pool.execute(`    
-    INSERT INTO SanPham(TenSP, MaTL, DonGiaSP, TonKhoSP, Chip, Main, VGA, NhanSanXuat, RAM, AnhSP) 
+    INSERT INTO sanpham(TenSanPham, Theloai, Gia, TenNXS, SoLuong, Mota) 
     VALUES 
-    (?, ?, ?, ?, ?, ?, ?, ?, ?, ?)`,
-        [TenSP, MaTL, DonGiaSP, TonKhoSP, Chip, Main, VGA, NhanSanXuat, RAM, AnhSP]);
+    (?, ?, ?, ?, ?, ?)`,
+        [TenSanPham, Theloai, Gia, TenNXS, SoLuong, Mota]);
     return res.status(200).json({
         message: "ok",
     })
 }
 
 let updateSanPham = async (req, res) => {
-    let { MaSanPham, TenSP, MaTL, DonGiaSP, TonKhoSP, Chip, Main, VGA, NhanSanXuat, RAM, AnhSP } = req.body;
+    let { MaSanPham, TenSanPham, Theloai, Gia, TenNXS, SoLuong, Mota } = req.body;
 
-    if (!MaSanPham || !TenSP || !MaTL || !DonGiaSP || !TonKhoSP || !Chip || !Main || !VGA || !NhanSanXuat || !RAM || !AnhSP) {
+    if (!MaSanPham || !TenSanPham || !Theloai || !Gia || !TenNXS || !SoLuong || !Mota) {
         return res.status(200).json({
             message: "missing update",
         })
     }
 
     await pool.execute(`
-    UPDATE SanPham SET TenSP = ?, MaTL = ?, DonGiaSP=?, TonKhoSP = ?, Chip = ?, Main = ?, VGA = ?, NhanSanXuat = ?, RAM = ?, AnhSP = ? 
+    UPDATE sanpham SET TenSanPham = ?, Theloai = ?, Gia=?, TenNXS = ?, SoLuong = ?,  Mota = ? 
     WHERE MaSanPham = ?`,
-        [TenSP, MaTL, DonGiaSP, TonKhoSP, Chip, Main, VGA, NhanSanXuat, RAM, AnhSP, MaSanPham]);
+        [TenSanPham, Theloai, Gia, TenNXS, SoLuong, Mota, MaSanPham]);
     return res.status(200).json({
         message: "ok",
     })
@@ -123,7 +123,7 @@ let deleteUser = async (req, res) => {
     }
 
     await pool.execute(`
-    DELETE FROM SanPham
+    DELETE FROM sanpham
     WHERE MaSanPham = ?`,
         [MaSanPham]);
     return res.status(200).json({

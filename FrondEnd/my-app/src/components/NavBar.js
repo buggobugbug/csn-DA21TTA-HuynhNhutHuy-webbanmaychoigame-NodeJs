@@ -1,14 +1,15 @@
 import React from 'react';
 import '../assets/css/NavBar.scss'
-import {Link} from 'react-router-dom';
+import {Link, NavLink} from 'react-router-dom';
 class NavBar extends React.Component {
     render() {
         return (
             <div className="topnav">
-                <Link to="/">Home</Link>
-                <Link to="/sanpham">Sản Phẩm</Link>
-                <Link to="/about">About</Link>
-            
+                <NavLink to="/">Home</NavLink>
+                <NavLink to="/sanpham">Sản Phẩm</NavLink>
+                <NavLink to="/thongtin">Thông tin</NavLink>
+                <NavLink to="/About">About</NavLink>
+                
             </div>
         
         );

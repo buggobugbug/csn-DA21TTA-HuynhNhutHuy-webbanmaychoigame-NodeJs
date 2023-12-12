@@ -39,7 +39,7 @@ let getEditPage = async (req, res) => {
 }
 
 let postUpdateSanPham = async (req, res) => {
-    let { TenSanPham, Gia, SoLuong, TenNXS, Theloai } = req.body;
+    let { MaSanPham ,TenSanPham, Gia, SoLuong, TenNXS, Theloai } = req.body;
 
     if (req.fileValidationError) {
         return res.status(400).json({ error: req.fileValidationError });
