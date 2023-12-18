@@ -10,6 +10,7 @@ import {
 import CarouselHomPage from '../components/CarouselHomepage';
 import DetailUser from '../components/DetailUser';
 import Footer from '../components/Footer';
+import Thongtindathang from '../components/Thongtindathang';
 
 
 function App() {
@@ -30,8 +31,11 @@ function App() {
           <Route path="/sanpham/:MaSanPham">
             <DetailUser/>
           </Route>
+          <Route path="/muahang/:MaSanPham" exact>
+            <Thongtindathang/>
+          </Route>
         </Switch>
-      <Footer/>
+
     
   </div>
     </BrowserRouter>

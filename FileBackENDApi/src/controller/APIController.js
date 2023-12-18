@@ -131,6 +131,71 @@ let deleteUser = async (req, res) => {
     })
 }
 
+// Hàm đặt hàng 
+
+const updateUser = async (req, res) => {
+    try {
+        function getRandomInt(min, max) {
+            min = Math.ceil(min);
+            max = Math.floor(max);
+            return Math.floor(Math.random() * (max - min + 1)) + min;
+        }
+        // Kiểm tra dữ liệu đầu vào
+        const { ten, sdt, diachi, soluong, makh, TenSanPham } = req.body;
+        if (!ten || !sdt || !diachi || !soluong || !makh) {
+            throw new Error("Bạn chưa truyền đủ thông tin không thể đặt hàng !!!!");
+        }
+
+        // Lấy thời gian hiện tại
+        const currentTime = new Date();
+        const formattedTime = currentTime
+            .toISOString()
+            .slice(0, 19)
+            .replace("T", " ");
+
+        // Tạo các số ngẫu nhiên
+        const randomIntegerInRange = getRandomInt(0, 60000);
+        const randomIntegerHoadon = getRandomInt(0, 60000);
+
+        // Insert thông tin khách hàng
+        await connection.execute(
+            "INSERT INTO khachhang(makh, ten, sdt, diachi) VALUES (?, ?, ?, ?)",
+            [randomIntegerInRange, ten, sdt, diachi]
+        );
+
+        // Cập nhật thông tin sản phẩm
+        // await connection.execute("UPDATE product SET kichco = ? WHERE id = ?", [
+        //     size,
+        //     id,
+        // ]);
+
+        // Insert thông tin hóa đơn
+        await connection.execute(
+            "INSERT INTO hoadon(mahd, makh, diachiship, thoigiandat) VALUES (?, ?, ?, ?)",
+            [randomIntegerHoadon, randomIntegerInRange, diachi, formattedTime]
+        );
+
+        // Insert thông tin chi tiết hóa đơn
+        await connection.execute(
+            "INSERT INTO chitiethoadon(mahd, id, soluongsp) VALUES (?, ?, ?)",
+            [randomIntegerHoadon, id, soluong]
+        );
+
+        await connection.execute(
+            " UPDATE sanpham SET SoLuong = SoLuong - ? WHERE MaSanPham = ?",
+            [soluong, id]
+        );
+
+        // Chuyển hướng về trang chủ sau khi đặt hàng thành công
+        const successMessage = "Bạn đã đặt hàng thành công!";
+
+        return res.send("cảm ơn bạn đã đặt hàng");
+    } catch (error) {
+        console.error("An error occurred:", error);
+        return res.status(500).send(error.message || "Đã có lỗi xảy ra");
+    }
+};
+
 module.exports = {
-    getAllSanPham, createNewUser, updateSanPham, deleteUser, getSanPhamById, getSanPhamSlider
+    getAllSanPham, createNewUser, updateSanPham, deleteUser, getSanPhamById, getSanPhamSlider, updateUser
 }

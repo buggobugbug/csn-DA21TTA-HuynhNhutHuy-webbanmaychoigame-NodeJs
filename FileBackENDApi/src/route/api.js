@@ -13,6 +13,7 @@ const initAPIRoute = (app) => {
     router.post('/create-user', APIController.createNewUser); //method POST -> CREATE data
     router.put('/update-sanpham', APIController.updateSanPham); //method PUT -> UPDATE data
     router.delete('/delete-user/:id', APIController.deleteUser); //method DELETE -> DELETE data
+    router.post('/update-user', APIController.updateUser);
 
     return app.use('/api/v1/', router)
 }

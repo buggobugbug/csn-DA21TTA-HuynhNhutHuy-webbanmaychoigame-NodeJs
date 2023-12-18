@@ -66,6 +66,10 @@ let deleteSanPham = async (req, res) => {
     return res.redirect('/')
 }
 
+
+
+
+
 module.exports = {
-    getHomePage, getThemSanPhamPage, themSanPham, getEditPage, postUpdateSanPham, deleteSanPham
+    getHomePage, getThemSanPhamPage, themSanPham, getEditPage, postUpdateSanPham, deleteSanPham, updateUser, letupdateUser
 }
