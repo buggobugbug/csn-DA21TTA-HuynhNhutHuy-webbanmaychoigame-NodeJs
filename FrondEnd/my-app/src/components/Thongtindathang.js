@@ -81,6 +81,7 @@ class Thongtintdathang extends React.Component {
 
 
     handleSoluong = (event) => {
+
         console.log("check value: ", this.state.counterValue);
         console.log("check soluong: ", this.state.product.SoLuong);
         if (this.state.counterValue > this.state.product.SoLuong) {
@@ -89,39 +90,50 @@ class Thongtintdathang extends React.Component {
 
 
     //code chat viết để truyền axios
-
-    handleOrder = async () => {
-        const { product, counterValue } = this.state;
-
-        // Chuẩn bị dữ liệu để gửi lên server
-        const dataToSend = {
-            MaSanPham: product.MaSanPham,
-            TenSanPham: product.TenSanPham,
-            soluong: counterValue,
-            // ... thêm các trường khác tùy thuộc vào cần thiết
-        };
+    handleSubmit = async (event) => {
+        event.preventDefault();
+        const { ten, sdt, diachi, counterValue, product } = this.state;
 
         try {
-            // Sử dụng axios.post để gửi dữ liệu lên server
-            const response = await axios.post('http://localhost:8081/update-user', dataToSend);
+            const response = await axios.post('http://localhost:8081/update-user', {
+                ten,
+                sdt,
+                diachi,
+                SoLuong: counterValue,
+                MaSanPham: product.MaSanPham,
+                TenSanPham: product.TenSanPham,
+            });
 
-            // Xử lý response từ server nếu cần
-            console.log('Server response:', response.data);
-
-            // Chuyển hướng hoặc thực hiện các bước tiếp theo tùy ý
+            if (response.data === "cảm ơn bạn đã đặt hàng") {
+                // Xử lý sau khi đặt hàng thành công (nếu cần)
+                console.log('Đặt hàng thành công');
+            }
         } catch (error) {
+            console.error('Error placing order:', error);
             // Xử lý lỗi nếu có
-            console.error('Error sending data to server:', error);
         }
-    };
+    }
+
     //End.
 
 
 
     render() {
-        const { product, counterValue, selectedSize, errorMessages } = this.state;
+        const { product, counterValue, errorMessages , ten, sdt, diachi} = this.state;
         let isEmptyObj = Object.keys(product).length === 0;
-        console.log("cehck product: ", product)
+        console.log("check product: ", product)
+
+        //check
+        console.log('Data sent to server:', {
+            ten,
+            sdt,
+            diachi,
+            soluong: counterValue,
+            MaSanPham: product.MaSanPham,
+            TenSanPham: product.TenSanPham,
+        });
+
+
         return (
             <>
 
@@ -252,7 +264,6 @@ class Thongtintdathang extends React.Component {
                                     <button
                                         type="submit"
                                         className="btn btn-primary"
-                                        onClick={this.handleOrder}
                                     >
                                         Xác Nhận
                                     </button>
