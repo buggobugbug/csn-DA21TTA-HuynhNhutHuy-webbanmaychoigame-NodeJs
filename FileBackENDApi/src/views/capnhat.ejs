@@ -15,7 +15,7 @@
         <a class="active">Cập nhật</a>
     </div>
     <div class="updateinfor-user-container">
-        <form action="/Trang-update-user" enctype="multipart/form-data" method="get">
+        <form action="/update-user" enctype="multipart/form-data" method="POST">
             <div style="padding-left:16px">
                 <div class="w3-container">
                     <h2>List user Table</h2>
@@ -31,6 +31,7 @@
                                 <th>Mã hóa đơn</th>
                                 <th>Số lượng</th>
                                 <th>Thời gian đặt hàng</th>
+                                <th>Tổng tiền</th>
                             </tr>
                         </thead>
                         <tbody>
@@ -60,6 +61,11 @@
                                     <td>
                                         <%= SanPham[i].thoigiandat %>
                                     </td>
+                                    <td>
+                                        <%= SanPham[i].Tongtien %>
+                                    </td>
+
+
 
                                 </tr>
                                 <% } %>

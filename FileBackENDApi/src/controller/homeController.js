@@ -73,7 +73,7 @@ const updateUser = async (req, res) => {
             return Math.floor(Math.random() * (max - min + 1)) + min;
         }
         // Kiểm tra dữ liệu đầu vào
-        const { ten, sdt, diachi, soluong, MaSanPham, tensp } = req.body;
+        const { ten, sdt, diachi, soluong, MaSanPham } = req.body;
         if (!ten || !sdt || !diachi  || !soluong || !MaSanPham) {
             throw new Error("Bạn chưa truyền đủ thông tin không thể đặt hàng !!!!");
         }
@@ -84,6 +84,8 @@ const updateUser = async (req, res) => {
             .toISOString()
             .slice(0, 19)
             .replace("T", " ");
+
+        
 
         // Tạo các số ngẫu nhiên
         const randomIntegerInRange = getRandomInt(0, 60000);
@@ -103,8 +105,8 @@ const updateUser = async (req, res) => {
 
         // Insert thông tin hóa đơn
         await pool.execute(
-            "INSERT INTO hoadon(mahd, makh, diachiship, thoigiandat) VALUES (?, ?, ?, ?)",
-            [randomIntegerHoadon, randomIntegerInRange, diachi, formattedTime]
+            "INSERT INTO hoadon(mahd, makh, diachiship, thoigiandat, soluong, MaSanPham) VALUES (?, ?, ?, ?, ?, ?)",
+            [randomIntegerHoadon, randomIntegerInRange, diachi, formattedTime, soluong, MaSanPham]
         );
 
         // Insert thông tin chi tiết hóa đơn
@@ -112,6 +114,7 @@ const updateUser = async (req, res) => {
             "INSERT INTO chitiethoadon(mahd, MaSanPham, soluong) VALUES (?, ?, ?)",
             [randomIntegerHoadon, MaSanPham, soluong]
         );
+
 
         await pool.execute(
             " UPDATE sanpham SET soluong = soluong - ? WHERE MaSanPham = ?",
@@ -141,9 +144,56 @@ let getupdateuser= async (req, res) => {
 }
 
 
+// let postHomePage = async (req, res) => {
+//     // Sử dụng req.body để lấy dữ liệu từ biểu mẫu POST
+//     const timid = req.body.timid;
+//     const timtensp = req.body.timtensp;
+//     const timloaisp = req.body.timloaisp;
+//     //console.log(req.body);
+//     // Bắt đầu câu truy vấn SQL
+//     let sqlQuery = `SELECT A.MaSanPham, A.TenSanPham, A.Theloai, A.SoLuong, A.TenNXS, A.Gia, A.Mota FROM sanpham AS A WHERE 1=1`;
+
+
+
+//     if (timid) {
+//         sqlQuery += ` AND A.MaSanPham LIKE '%${timid}%'`;
+//     }
+
+//     if (timtensp) {
+//         sqlQuery += ` AND A.TenSanPham LIKE '%${timtensp}%'`;
+//     }
+
+//     if (timloaisp) {
+//         sqlQuery += ` AND A.Theloai LIKE '${timloaisp}'`;
+//     }
+
+//     // if (timsize) {
+//     //     sqlQuery += ` AND A.kichco LIKE '${timsize}'`;
+//     // }
+
+//     // Kết thúc câu truy vấn SQL
+//     const [rows, fields] = await pool.execute(sqlQuery);
+//     return res.render("search.ejs", { SanPham: rows });
+// };
+
+let searchProductByMaSanPham = async (MaSanPham) => {
+    try {
+        const [rows, fields] = await pool.execute(
+            'SELECT * FROM sanpham WHERE MaSanPham = ?',
+            [MaSanPham]
+        );
+        return rows;
+    } catch (error) {
+        console.error('Error searching product by MaSanPham:', error);
+        throw error;
+    }
+};
+
+
+
 
 
 module.exports = {
-    getHomePage, getThemSanPhamPage, themSanPham, getEditPage, postUpdateSanPham, deleteSanPham, updateUser, getupdateuser
+    getHomePage, getThemSanPhamPage, themSanPham, getEditPage, postUpdateSanPham, deleteSanPham, updateUser, getupdateuser, searchProductByMaSanPham
 
 }

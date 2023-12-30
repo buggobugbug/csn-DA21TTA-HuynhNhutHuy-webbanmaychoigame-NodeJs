@@ -44,9 +44,9 @@ class DetailUser extends React.Component {
                         </div>
                         <div className="product-details">
                             <h2 className="product-title">{user.TenSanPham}</h2>
-                            <p className="product-description">Việc sở hữu một chiếc máy PlayStation 5 sẽ không còn khó khăn nữa khi bạn lựa chọn đến với nShop.
-                            Sản phẩm PlayStation 5 Standard Edition chính hãng Sony Việt Nam có bán tại nShop là phiên bản mới máy chơi game mới nhất của Sony với hàng loạt công nghệ hiện đại được tích hơp bên trong.
-                            Chắc chắn nó sẽ mang lại cho bạn một trải nghiệm game đỉnh cao. Bên cạnh đó nShop cũng có đầy đủ dịch vụ liên quan đến PS5 để bạn có thể tận hưởng trọn vẹn nhất.</p>
+                            <p className="product-description">Việc sở hữu một chiếc máy PlayStation sẽ không còn khó khăn nữa khi bạn lựa chọn đến với shop của chúng tôi.
+                            Sản phẩm PlayStation chính hãng Sony Việt Nam có bán tại shop chúng tôi là phiên bản mới máy chơi game mới nhất của Sony với hàng loạt công nghệ hiện đại được tích hơp bên trong.
+                            Chắc chắn nó sẽ mang lại cho bạn một trải nghiệm game đỉnh cao. Bên cạnh đó, shop chúng tôi cũng có đầy đủ dịch vụ liên quan đến máy chơi game để bạn có thể tận hưởng trọn vẹn nhất.</p>
                             <div className="additional-info">
                                 <p><strong>Thương Hiệu:</strong> {user.TenNXS}</p>
                             </div>

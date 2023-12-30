@@ -18,6 +18,28 @@
     <div style="padding-left:16px">
         <div class="w3-container">
             <h2>List user Table</h2>
+            <!-- form tim -->
+            <!-- Form tìm kiếm sản phẩm theo MaSanPham -->
+            <form action="/search-by-ma-san-pham" method="post">
+                <label for="MaSanPham">Tìm sản phẩm theo MaSanPham:</label>
+                <input type="text" id="MaSanPham" name="MaSanPham" />
+                <button type="submit">Tìm kiếm</button>
+            </form>
+            
+            <!-- Kết quả tìm kiếm -->
+            <% if (searchResult && searchResult.length> 0) { %>
+                <h3>Kết quả tìm kiếm:</h3>
+                <ul>
+                    <% searchResult.forEach(product=> { %>
+                        <li>
+                            <%= product.TenSanPham %> - <%= product.Gia %> VND
+                        </li>
+                        <% }); %>
+                </ul>
+                <% } else { %>
+                    <p>Không có sản phẩm nào được tìm thấy.</p>
+                    <% } %>
+            <!-- form tim -->
 
             <table class="w3-table-all w3-hoverable">
                 <thead>
@@ -74,5 +96,6 @@
 
     </div>
 </body>
+
 
 </html>

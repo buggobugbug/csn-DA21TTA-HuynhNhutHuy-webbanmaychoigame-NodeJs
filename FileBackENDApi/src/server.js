@@ -5,6 +5,8 @@ import initAPIRoute from './route/api.js'
 import path from 'path';
 
 
+
+
 require('dotenv').config();
 
 const app = express()
@@ -28,6 +30,22 @@ initWebRoute(app);
 //init api router
 initAPIRoute(app);
 
+app.use(express.urlencoded({ extended: true }));
+
+// Route xử lý tìm kiếm theo MaSanPham
+app.post('/search-by-ma-san-pham', async (req, res) => {
+    const { MaSanPham } = req.body;
+
+    try {
+        const searchResult = await homeController.searchProductByMaSanPham(MaSanPham);
+        res.render('search', { searchResult });
+    } catch (error) {
+        res.status(500).send('Internal Server Error');
+    }
+});
+
 app.listen(port, () => {
     console.log(`Example app listening on port ${port}`)
 })
+
+

@@ -139,9 +139,6 @@ class Thongtintdathang extends React.Component {
 
                 {isEmptyObj === false && (
                     <div className="muahang-container">
-                        <a href="/some-valid-link" className="logo-muahang">
-                            <p>ĐẶT HÀNG</p>
-                        </a>
                         <form method="POST" action="http://localhost:8081/update-user">
                             <div className="container-setup">
                                 <div className="muahang-form">
@@ -255,11 +252,12 @@ class Thongtintdathang extends React.Component {
                                     <div className="muahang-tongcong">
                                         <span>Tổng cộng</span>
                                         <span className="muahang-tongcong1">
-                                            {(
+                                           {(
                                                 product.Gia * counterValue +
                                                 30000
-                                            ).toLocaleString()}{" "}
+                                            ).toLocaleString()} VND {" "}
                                         </span>
+
                                     </div>
                                     <button
                                         type="submit"

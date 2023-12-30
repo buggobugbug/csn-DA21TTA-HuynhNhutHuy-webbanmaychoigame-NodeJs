@@ -41,8 +41,20 @@ const initWebRoute = (app) => {
     router.post('/Them-san-pham', upload.single("profile_pic"), homeController.themSanPham)
     router.post('/update-sanpham', upload.single("profile_pic"), homeController.postUpdateSanPham)
     router.post('/delete', homeController.deleteSanPham)
-    router.post('/update-user', homeController.updateUser);
+    router.post('/update-user', homeController.updateUser)
     router.get('/Trang-update-user', homeController.getupdateuser)
+    router.post('/search-by-ma-san-pham', async (req, res) => {
+        const { MaSanPham } = req.body;
+
+        try {
+            const searchResult = await homeController.searchProductByMaSanPham(MaSanPham);
+            res.render('search', { searchResult });
+        } catch (error) {
+            res.status(500).send('Internal Server Error');
+        }
+    });
+
+    // router.post('/Tim', homeController.postHomePage)
 
 
     // router.get('/detail/user/:id', homeController.getDetailPage);

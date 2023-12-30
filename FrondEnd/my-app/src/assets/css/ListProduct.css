@@ -93,3 +93,49 @@
     color: black;
     font-weight: bold;
 }
+
+
+/* CSS cho phần Searchfillter */
+.Searchfillter {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin-bottom: 20px;
+}
+
+/* CSS cho phần input */
+.editinput input {
+    padding: 10px;
+    border: 1px solid #ccc;
+    border-radius: 4px;
+    width: 200px;
+}
+
+/* CSS cho phần fillter */
+.fillter {
+    display: flex;
+    align-items: center;
+}
+
+/* CSS cho phần label */
+.fillter label {
+    margin-right: 10px;
+}
+
+/* CSS cho class price như một nút */
+.price {
+    cursor: pointer;
+    display: inline-block;
+    padding: 10px 15px;
+    background-color: #3498db;
+    color: #fff;
+    text-align: center;
+    text-decoration: none;
+    border-radius: 4px;
+    transition: background-color 0.3s ease;
+}
+
+/* Hiệu ứng khi di chuột vào nút */
+.price:hover {
+    background-color: #2980b9;
+}
