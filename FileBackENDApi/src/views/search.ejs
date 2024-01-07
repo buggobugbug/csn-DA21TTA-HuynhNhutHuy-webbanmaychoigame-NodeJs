@@ -18,28 +18,41 @@
     <div class="w3-container">
         <h2>Danh Sách Sản Phẩm</h2>
     
-        <label for="productId">Lọc theo giá tiền sản phẩm: </label>
     
         <!-- Form tìm kiếm sản phẩm theo MaSanPham -->
-        <form action="/search-by-ma-san-pham" method="post">
-            <label for="maSanPham">Tìm sản phẩm theo MaSanPham:</label>
-            <input type="text" id="MaSanPham" name="MaSanPham" />
-            <button type="submit">Tìm kiếm</button>
-        </form>
+        <div class="search-forms-container">
+            <form action="/search-by-ma-san-pham" method="post" class="search-form">
+                <label for="MaSanPham">Tìm sản phẩm theo Mã Sản Phẩm:</label>
+                <input type="text" id="MaSanPham" name="MaSanPham" />
+                <button type="submit">Tìm kiếm</button>
+            </form>
         
+            <form action="/search-by-ten-san-pham" method="post" class="search-form">
+                <label for="TenSanPham">Tìm sản phẩm theo Tên Sản Phẩm:</label>
+                <input type="text" id="TenSanPham" name="TenSanPham" />
+                <button type="submit">Tìm kiếm</button>
+            </form>
+        
+            <form action="/search-by-nha-san-xuat" method="post" class="search-form">
+                <label for="TenNXS">Tìm Nhà Sản Xuất</label>
+                <input type="text" id="TenNXS" name="TenNXS" />
+                <button type="submit">Tìm kiếm</button>
+            </form>
+        
+            <form action="/search-by-the-loai" method="post" class="search-form">
+                <label for="Theloai">Chọn Nhà Sản Xuất:</label>
+                <select id="Theloai" name="Theloai">
+                    <option value="PS5">PS5</option>
+                    <option value="PS4">PS4</option>
+                </select>
+                <button type="submit">Tìm kiếm</button>
+            </form>
+        </div>
+
+
         <!-- Kết quả tìm kiếm -->
-        <% if (SanPham && SanPham.length> 0) { %>
-            <h3>Kết quả tìm kiếm:</h3>
-            <ul>
-                <% SanPham.forEach(product=> { %>
-                    <li>
-                        <%= product.TenSanPham %> - <%= product.Gia %> VND
-                    </li>
-                    <% }); %>
-            </ul>
-            <% } else { %>
-                <p>Không có sản phẩm nào được tìm thấy.</p>
-                <% } %>
+        
+
         <table class="w3-table-all w3-hoverable">
             <thead>
                 <tr class="w3-light-grey">

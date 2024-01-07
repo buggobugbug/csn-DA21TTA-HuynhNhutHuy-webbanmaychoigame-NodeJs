@@ -189,11 +189,50 @@ let searchProductByMaSanPham = async (MaSanPham) => {
     }
 };
 
+let searchProductByTenSanPham = async (TenSanPham) => {
+    try {
+        const [rows, fields] = await pool.execute(
+            'SELECT * FROM sanpham WHERE TenSanPham = ?',
+            [TenSanPham]
+        );
+        return rows;
+    } catch (error) {
+        console.error('Error searching product by TenSanPham:', error);
+        throw error;
+    }
+};
+let searchProductNhaSanXuat = async (TenNXS) => {
+    try {
+        const [rows, fields] = await pool.execute(
+            'SELECT * FROM sanpham WHERE TenNXS = ?',
+            [TenNXS]
+        );
+        return rows;
+    } catch (error) {
+        console.error('Error searching product by TenNXS:', error);
+        throw error;
+    }
+};
 
+let searchProductTheloai = async (Theloai) => {
+    try {
+        const [rows, fields] = await pool.execute(
+            'SELECT * FROM sanpham WHERE Theloai = ?',
+            [Theloai]
+        );
 
+        return rows;
+        
+    } catch (error) {
+        console.error('Error searching product by Theloai:', error);
+        throw error;
+    }
+};
 
 
 module.exports = {
-    getHomePage, getThemSanPhamPage, themSanPham, getEditPage, postUpdateSanPham, deleteSanPham, updateUser, getupdateuser, searchProductByMaSanPham
+    getHomePage, getThemSanPhamPage, themSanPham, getEditPage, postUpdateSanPham, 
+    deleteSanPham, updateUser, getupdateuser, searchProductByMaSanPham, 
+    searchProductByTenSanPham, searchProductNhaSanXuat, searchProductTheloai
 
 }

@@ -44,15 +44,48 @@ const initWebRoute = (app) => {
     router.post('/update-user', homeController.updateUser)
     router.get('/Trang-update-user', homeController.getupdateuser)
     router.post('/search-by-ma-san-pham', async (req, res) => {
-        const { MaSanPham } = req.body;
+        const { MaSanPham: searchMaSanPham } = req.body;
 
         try {
-            const searchResult = await homeController.searchProductByMaSanPham(MaSanPham);
-            res.render('search', { searchResult });
+            const resultSanPham = await homeController.searchProductByMaSanPham(searchMaSanPham);
+            res.render('search', { SanPham: resultSanPham });
         } catch (error) {
             res.status(500).send('Internal Server Error');
         }
     });
+    router.post('/search-by-ten-san-pham', async (req, res) => {
+        const { TenSanPham: searchTenSanPham } = req.body;
+
+        try {
+            const resultSanPham = await homeController.searchProductByTenSanPham(searchTenSanPham);
+            res.render('search', { SanPham: resultSanPham });
+        } catch (error) {
+            res.status(500).send('Internal Server Error');
+        }
+    });
+    router.post('/search-by-nha-san-xuat', async (req, res) => {
+        const { TenNXS: searchTenNXS } = req.body;
+
+        try {
+            const resultSanPham = await homeController.searchProductNhaSanXuat(searchTenNXS);
+            res.render('search', { SanPham: resultSanPham });
+        } catch (error) {
+            res.status(500).send('Internal Server Error');
+        }
+    });
+    router.post('/search-by-the-loai', async (req, res) => {
+        const { Theloai: searchTheloai } = req.body;
+
+        try {
+            const resultSanPham = await homeController.searchProductTheloai(searchTheloai);
+            res.render('search', { SanPham: resultSanPham });
+        } catch (error) {
+            console.error('Error in search-by-the-loai controller:', error);
+            res.status(500).send('Internal Server Error');
+        }
+    });
+
+
 
     // router.post('/Tim', homeController.postHomePage)
 

@@ -44,3 +44,52 @@ body {
 .create-user-container input {
     width: 700px;
 }
+
+/* Container cho các form */
+.search-forms-container {
+    display: flex;
+    gap: 10px;
+    /* Khoảng cách giữa các form */
+    justify-content: center;
+    /* Các form sẽ được căn giữa theo chiều ngang */
+    margin: 20px;
+    /* Khoảng cách với các phần khác trên trang */
+}
+
+/* CSS cho form chung */
+.search-form {
+    display: flex;
+    flex-direction: column;
+    max-width: 300px;
+}
+
+/* CSS cho label */
+.search-form label {
+    margin-bottom: 5px;
+}
+
+/* CSS cho input và select */
+.search-form input,
+.search-form select {
+    padding: 8px;
+    margin-bottom: 10px;
+    border: 1px solid #ccc;
+    border-radius: 4px;
+    width: 100%;
+    box-sizing: border-box;
+}
+
+/* CSS cho button */
+.search-form button {
+    background-color: #3498db;
+    color: #fff;
+    padding: 8px 15px;
+    border: none;
+    border-radius: 4px;
+    cursor: pointer;
+}
+
+/* Hiệu ứng khi di chuột vào button */
+.search-form button:hover {
+    background-color: #2980b9;
+}
