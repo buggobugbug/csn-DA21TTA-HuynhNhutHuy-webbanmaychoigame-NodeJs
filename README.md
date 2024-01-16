@@ -68,11 +68,11 @@ https://github.com/buggobugbug/csn-DA21TTA-HuynhNhutHuy-webbanmaychoigame-NodeJs
 
 2. **Cài Đặt Dependencies:**
 
-   - Chuột phải vào thư mục src/Back chọn Open in integrated Terminal
+   - Chuột phải vào thư mục src/FileBackEndApi chọn Open in integrated Terminal
    ```bash
    npm install
    ```
-   - Chuột phải vào thư mục src/Fron chọn Open in integrated Terminal
+   - Chuột phải vào thư mục src/FrontEnd chọn Open in integrated Terminal
     ```bash
    npm install
    ```
@@ -83,9 +83,9 @@ https://github.com/buggobugbug/csn-DA21TTA-HuynhNhutHuy-webbanmaychoigame-NodeJs
 
 6. **Chạy Ứng Dụng:**
 
-   - Import file src/shoppc_data.sql vào Xampp
+   - Import file src/cosodulieubanmaychoigame.sql vào Xampp
    - Mở visual studio code Open dự án
-   - Chuột phải vào thư mục src/Back chọn Open in integrated Terminal
+   - Chuột phải vào thư mục src/FileBackEndApi chọn Open in integrated Terminal
    ```bash
    npm run start
    ```
