@@ -1,0 +1,141 @@
+.List-product{
+    width: 100%;
+    height: 1000px;
+    margin-top: 5%;
+}
+
+.title{
+    text-align: center;
+    font-weight: 500;
+}
+
+.child{
+    margin-top: 5%;
+}
+
+.list-user-content{
+    display: grid;
+    grid-template-columns: 1fr 1fr 1fr 1fr 1fr;
+
+}
+
+.container-sanpham {
+    border: 1px solid #ddd;
+    border-radius: 8px;
+    overflow: hidden;
+    width: 300px;
+    height: 400px;
+    margin: 16px;
+    position: relative;
+}
+
+.container-sanpham .hinhanh {
+    position: relative;
+    overflow: hidden;
+}
+
+.container-sanpham .hinhanh img {
+    max-width: 100%;
+    height: auto;
+    border-top-left-radius: 8px;
+    border-top-right-radius: 8px;
+    transition: transform 0.3s ease-in-out;
+}
+
+.container-sanpham:hover .hinhanh img {
+    transform: scale(1.1);
+}
+
+.container-sanpham .Add-to-card {
+    background-color: black;
+    color: #fff;
+    padding: 8px 16px;
+    border: none;
+    border-radius: 4px;
+    cursor: pointer;
+    font-size: 16px;
+    margin-top: 8px;
+    transition: background-color 0.3s ease-in-out, opacity 0.3s ease-in-out, transform 0.3s ease-in-out;
+    opacity: 0;
+    /* Mặc định là ẩn */
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+}
+
+.container-sanpham:hover .Add-to-card {
+    opacity: 1;
+    transform: translate(-50%, -50%) scale(1.1);
+    color: aqua;
+    /* Hiệu ứng phóng to */
+}
+
+.container-sanpham .Add-to-card:active {
+    transform: translate(-50%, -50%) scale(0.9);
+    /* Hiệu ứng thu nhỏ khi được nhấn */
+}
+
+.sanpham-title {
+    font-size: 15px;
+    color: #333;
+    transition: color 0.3s ease-in-out;
+    margin-top: 10px;
+}
+
+.container-sanpham:hover .sanpham-title {
+    color: orange;
+}
+
+.sanpham-gia {
+    text-align: center;
+    display: flex;
+    color: black;
+    font-weight: bold;
+}
+
+
+/* CSS cho phần Searchfillter */
+.Searchfillter {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin-bottom: 20px;
+}
+
+/* CSS cho phần input */
+.editinput input {
+    padding: 10px;
+    border: 1px solid #ccc;
+    border-radius: 4px;
+    width: 200px;
+}
+
+/* CSS cho phần fillter */
+.fillter {
+    display: flex;
+    align-items: center;
+}
+
+/* CSS cho phần label */
+.fillter label {
+    margin-right: 10px;
+}
+
+/* CSS cho class price như một nút */
+.price {
+    cursor: pointer;
+    display: inline-block;
+    padding: 10px 15px;
+    background-color: #3498db;
+    color: #fff;
+    text-align: center;
+    text-decoration: none;
+    border-radius: 4px;
+    transition: background-color 0.3s ease;
+}
+
+/* Hiệu ứng khi di chuột vào nút */
+.price:hover {
+    background-color: #2980b9;
+}
